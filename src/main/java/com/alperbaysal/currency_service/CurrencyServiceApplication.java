@@ -2,9 +2,15 @@ package com.alperbaysal.currency_service;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-@SpringBootApplication
+
+@Configuration
+@ComponentScan
+@EnableAutoConfiguration
 public class CurrencyServiceApplication implements CommandLineRunner {
 
  /*   @Autowired
@@ -20,6 +26,10 @@ public class CurrencyServiceApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+    }
+
+    // @Override
+   // public void run(String... args) throws Exception {
         //var response = evdsClientImpl.GetCurrency();
 
 //        Timestamp ts = Timestamp.from(Instant.now());
@@ -31,5 +41,5 @@ public class CurrencyServiceApplication implements CommandLineRunner {
 //        {
 //          System.out.println("A new row has been inserted!");
 //        }
-    }
+   // }
 }

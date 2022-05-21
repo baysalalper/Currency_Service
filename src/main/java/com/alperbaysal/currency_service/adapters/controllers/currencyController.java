@@ -2,8 +2,6 @@ package com.alperbaysal.currency_service.adapters.controllers;
 
 import com.alperbaysal.currency_service.domain.entities.GetCurrencyDataApiResponse;
 import com.alperbaysal.currency_service.domain.usecases.GetCurrencyDataUseCaseImpl;
-import org.apache.catalina.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

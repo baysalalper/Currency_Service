@@ -2,24 +2,21 @@ package com.alperbaysal.currency_service.domain.usecases;
 
 import com.alperbaysal.currency_service.domain.entities.GetCurrencyRatesServiceResponse;
 import com.alperbaysal.currency_service.infrastructure.apiclients.CurrencyClient;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
-@Configuration
-public class GetCurrencyDataUseCaseImpl implements GetCurrencyDataUseCase{
+@Component
+@Scope(value = "singleton")
+public class GetCurrencyDataUseCaseImpl{
 
+    @Autowired
     private CurrencyClient _currencyClient;
 
-    public GetCurrencyDataUseCaseImpl(CurrencyClient currencyClient) {
-        this._currencyClient = currencyClient;
-    }
-
-    @Override
-    @Bean
     public GetCurrencyRatesServiceResponse.CurrencyItem getCurrentRates() throws ExecutionException, InterruptedException {
         final CompletableFuture<GetCurrencyRatesServiceResponse> response = CompletableFuture.supplyAsync(() -> {
             try {

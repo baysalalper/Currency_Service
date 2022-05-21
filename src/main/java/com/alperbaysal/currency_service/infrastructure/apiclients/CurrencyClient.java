@@ -3,7 +3,8 @@ package com.alperbaysal.currency_service.infrastructure.apiclients;
 import com.alperbaysal.currency_service.domain.entities.GetCurrencyRatesServiceResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URI;
@@ -13,22 +14,11 @@ import java.net.http.HttpResponse;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class CurrencyClient {
+@Component
+@Scope(value = "singleton")
+public final class CurrencyClient{
 
-    private static CurrencyClient INSTANCE;
-    HttpClient client = HttpClient.newHttpClient();
-
-    private CurrencyClient() {
-    }
-
-    @Bean
-    public static CurrencyClient getInstance() {
-        if(INSTANCE == null) {
-            INSTANCE = new CurrencyClient();
-        }
-
-        return INSTANCE;
-    }
+   private final HttpClient client = HttpClient.newHttpClient();
 
     public GetCurrencyRatesServiceResponse GetCurrency() throws IOException, InterruptedException {
 
