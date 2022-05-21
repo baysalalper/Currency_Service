@@ -1,4 +1,4 @@
-package com.alperbaysal.currency_service.Infrastructure.ApiClients.Models;
+package com.alperbaysal.currency_service.domain.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -14,7 +14,7 @@ public class GetCurrencyRatesServiceResponse {
         this.Items = i;
     }
 
-    private class CurrencyItem {
+    public class CurrencyItem {
         @JsonProperty("TP_DK_USD_A")
         public String Usd;
         @JsonProperty("TP_DK_EUR_A")

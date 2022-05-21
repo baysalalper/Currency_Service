@@ -1,4 +1,4 @@
-package com.alperbaysal.currency_service.Domain.Entities;
+package com.alperbaysal.currency_service.domain.entities;
 
 import javax.persistence.*;
 

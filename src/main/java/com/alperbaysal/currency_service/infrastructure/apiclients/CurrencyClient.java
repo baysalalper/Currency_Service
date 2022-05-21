@@ -1,9 +1,9 @@
-package com.alperbaysal.currency_service.Application.ApiClients;
+package com.alperbaysal.currency_service.infrastructure.apiclients;
 
-import com.alperbaysal.currency_service.Infrastructure.ApiClients.IEvdsClient;
-import com.alperbaysal.currency_service.Infrastructure.ApiClients.Models.GetCurrencyRatesServiceResponse;
+import com.alperbaysal.currency_service.domain.entities.GetCurrencyRatesServiceResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.context.annotation.Bean;
 
 import java.io.IOException;
 import java.net.URI;
@@ -13,11 +13,23 @@ import java.net.http.HttpResponse;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EvdsClient implements IEvdsClient {
+public final class CurrencyClient {
 
+    private static CurrencyClient INSTANCE;
     HttpClient client = HttpClient.newHttpClient();
 
-    @Override
+    private CurrencyClient() {
+    }
+
+    @Bean
+    public static CurrencyClient getInstance() {
+        if(INSTANCE == null) {
+            INSTANCE = new CurrencyClient();
+        }
+
+        return INSTANCE;
+    }
+
     public GetCurrencyRatesServiceResponse GetCurrency() throws IOException, InterruptedException {
 
 
